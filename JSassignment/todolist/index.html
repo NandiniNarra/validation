@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <input type="text" class="form-control" placeholder="Enter a task here" id="addtaskinput">
+        <button type="button" class="btn-sucess" id="addtaskbtn">Add Task</button>
+        <button type="button" class="btn-sucess" id="updatetaskbtn">Update Task</button>
+        <ol id="orderedlist">
+        </ol>
+    </div>
+    <script>
+        let containerElement = document.getElementById('container');
+        let todosList =[];
+        let addtaskinput = document.getElementById("addtaskinput");
+        let addtaskbtn = document.getElementById("addtaskbtn");
+        let orderedlist = document.getElementById("orderedlist");
+        let listaddn = document.getElementById("listaddn");
+        let deleteallbtn = document.getElementById("deleteallbtn");
+        let todoNumber = 0;
+        let editlabelId;
+
+        function deleteItem(liitemsId){
+                let items = document.getElementById(liitemsId);
+                orderedlist.removeChild(items);
+        } 
+
+        function editItem(labelId){
+                let labelItem = document.getElementById(labelId);
+                addtaskinput.value = labelItem.textContent;
+                editlabelId = labelId;
+        }
+
+        function createItems(todo){
+            let liitems = document.createElement("li");
+            let liitemsId = "li" + todoNumber;
+            liitems.id =  liitemsId;
+            
+            orderedlist.appendChild(liitems);
+            let labelElement = document.createElement("label");
+            let labelId = "label" + todoNumber;
+            labelElement.id = labelId;
+            labelElement.textContent = todo.task;
+            liitems.appendChild(labelElement);
+            let newbtn = document.createElement("button");
+            newbtn.textContent = "Delete";
+            liitems.appendChild(newbtn);
+
+            newbtn.addEventListener("click", function(){
+                deleteItem(liitemsId)
+            })
+               
+            let editNewbtn = document.createElement("button");
+            liitems.appendChild(editNewbtn);
+            editNewbtn.textContent = "Edit";
+
+            editNewbtn.onclick = function(){
+                editItem(labelId);
+            }
+   
+        }
+        updatetaskbtn.addEventListener("click", function(){
+            console.log(editlabelId);
+                document.getElementById(editlabelId).textContent = addtaskinput.value;
+                addtaskinput.value ="";
+            })
+        addtaskbtn.addEventListener("click", function(){
+            todoNumber = todoNumber + 1;
+            addtaskinputval = addtaskinput.value;
+           let todo = {id:todoNumber,task:addtaskinputval};
+            console.log(todosList);
+            if (addtaskinput.value !== ""){
+                createItems(todo);
+            }
+            addtaskinput.value = "";
+        })
+    </script>
+</body>
+
+</html>
