@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="container">
+        <div class="bg-container">
+            <fieldset class="fieldset">
+                <legend class="legend">Login Panel</legend>
+            <form action = "sucess.html" onsubmit="return validateForm()" novalidate>
+                <div class="margin-container">
+                    <label for="email">Email Id:</label>
+                    <input type="email" id="email" class="color" onblur = validate2()>
+                    <div id="error2" class="error"></div>
+                </div>
+                <div class="margin-container">
+                    <label for="pass">Password:</label>
+                    <input type="password" id="pass" class="color" onblur = validate3()>
+                    <div id="error3" class="error"></div>
+                </div>
+                <div class="margin-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remeber me</label>
+                </div>
+                <div class="button">
+                    <input type="submit" class="button-1">
+                    <div id="error4" class="error"></div>
+                </div>
+            </form> 
+            </fieldset>
+        </div>
+    </section>
+    <script src="./index.js"></script>
+</body>
+</html>
