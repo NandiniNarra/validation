@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image slider</title>
+</head>
+<body>
+  <img id="slide" width="400" height="200">
+  <script>
+      var i ="0"
+      var images=[];
+      images[0] = 'panel.png';
+      images[1] = 'fourthimage.png';
+      images[2] = 'fifthimage.png';
+      images[3] = 'panel.png';
+      images[4] = 'Number Square.png';
+
+      function changeImg(){
+          document.getElementById ("slide").src = images[i];
+          i++;
+          if(i >= images.length){
+            i=0;
+            
+          }
+          
+      }
+      interval = setInterval(changeImg, 3000);
+ 
+    </script>
+    <div>
+        <img id ="slider" height="200" width="400">
+        <button onClick="previous()">Previous</button>
+        <button onClick="next()">Next</button>
+    </div>
+    <script>
+      let imgElement = document.getElementById('slider');
+      var picture=[];
+      picture[0] = 'panel.png';
+      picture[1] = 'fourthimage.png';
+      picture[2] = 'fifthimage.png'; 
+      picture[3] = 'panel.png';
+      picture[4] = 'Number Square.png';
+      let picNumber = 0;
+      imgElement.src = picture[picNumber];
+      
+      
+      function previous(){
+        if (picNumber < 0){
+          picNumber = 0;
+        imgElement.src = picture[0];
+      }
+      else{
+        imgElement.src = picture[picNumber--];
+      }
+      }
+      function next(){
+        if (picNumber > 4){
+          picNumber = 0;
+        imgElement.src = picture[0];
+      }
+      else{
+        imgElement.src = picture[picNumber++];
+      }   
+      }
+    </script>
+</body>
+</html>
